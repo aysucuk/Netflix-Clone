@@ -12,7 +12,8 @@ class HeroHeaderUIView: UIView {
     private let downloadButton: UIButton = {
         let button = UIButton()
         button.setTitle("Download", for: .normal)
-        button.layer.borderColor = UIColor.systemBackground.cgColor
+        button.setTitleColor(.darkGray, for: .normal)
+        button.layer.borderColor = UIColor.darkGray.cgColor
         button.layer.borderWidth = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
@@ -22,7 +23,8 @@ class HeroHeaderUIView: UIView {
     private let playButton: UIButton = {
         let button = UIButton()
         button.setTitle("Play", for: .normal)
-        button.layer.borderColor = UIColor.systemBackground.cgColor
+        button.setTitleColor(.darkGray, for: .normal)
+        button.layer.borderColor = UIColor.darkGray.cgColor
         button.layer.borderWidth = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
@@ -40,6 +42,7 @@ class HeroHeaderUIView: UIView {
     private func addGradient() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.systemBackground.cgColor]
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer.frame = bounds
         layer.addSublayer(gradientLayer)
     }
