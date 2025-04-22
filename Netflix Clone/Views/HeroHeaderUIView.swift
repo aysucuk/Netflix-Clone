@@ -41,7 +41,7 @@ class HeroHeaderUIView: UIView {
 
     private func addGradient() {
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor(named: "gradientColor")?.cgColor as Any]
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer.frame = bounds
         layer.addSublayer(gradientLayer)
@@ -73,6 +73,13 @@ class HeroHeaderUIView: UIView {
         addSubview(playButton)
         addSubview(downloadButton)
         applyConstrains()
+    }
+    
+    public func configure(with model: TitleViewModel) {
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(model.posterURL)") else {
+            return
+        }
+        heroImageView.sd_setImage(with: url, completed: nil)
     }
     
     override func layoutSubviews() {
